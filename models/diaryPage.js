@@ -8,6 +8,16 @@ const diaryPageSchema = new mongoose.Schema({
     minlength: 2,
     maxlength: 30,
   },
+  imageUrl: {
+    type: String,
+    required: true,
+    validate: {
+      validator(value) {
+        return validator.isURL(value);
+      },
+      message: "You must enter a valid URL",
+    },
+  },
   text: {
     type: String,
     required: true,
