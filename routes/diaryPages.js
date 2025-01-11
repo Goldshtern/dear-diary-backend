@@ -1,7 +1,14 @@
 const router = require("express").Router();
+const {
+  getPages,
+  createPage,
+  deletePage,
+} = require("../controllers/diaryPages");
+const auth = require("../middlewares/auth");
+const { validateDiaryPage, validateId } = require("../middlewares/validation");
 
-router.get("/", () => console.log("GET /pages"));
-router.post("/", () => console.log("POST /pages"));
-router.delete("/:pageId", () => console.log("DELETE /pages by ID"));
+router.get("/", auth, getPages);
+router.post("/", auth, validateDiaryPage, createPage);
+router.delete("/:pageId", auth, validateId, deletePage);
 
 module.exports = router;
