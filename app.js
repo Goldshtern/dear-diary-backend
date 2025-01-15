@@ -4,7 +4,6 @@ require("dotenv").config();
 
 const app = express();
 const { errors } = require("celebrate");
-const { log } = require("winston");
 const errorHandler = require("./middlewares/error-handler");
 const { requestLogger, errorLogger } = require("./middlewares/logger");
 const mainRouter = require("./routes");
