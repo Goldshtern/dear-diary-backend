@@ -5,7 +5,9 @@ const NotFoundError = require("../errors/not-found-err");
 const ForbiddenError = require("../errors/forbidden-err");
 
 const getPages = (req, res, next) => {
-  DiaryPage.find()
+  const userId = req.user._id;
+
+  DiaryPage.find({ owner: userId })
     .then((diaryPages) => res.send({ diaryPages }))
     .catch(next);
 };
