@@ -44,7 +44,7 @@ const validateUserInfo = celebrate({
       "string.min": "User name must be at least 2 characters long",
       "string.max": "User name must be at most 30 characters long",
     }),
-    avatar: Joi.string().custom(validateUrl).required().messages({
+    avatarUrl: Joi.string().custom(validateUrl).required().messages({
       "string.base": "Avatar URL must be a string",
       "string.empty": "Avatar URL is required",
     }),
