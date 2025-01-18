@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 require("dotenv").config();
 
 const app = express();
@@ -18,6 +19,7 @@ mongoose
   .catch(console.error);
 
 app.use(express.json());
+app.use(cors());
 app.use(requestLogger);
 app.use("/", mainRouter);
 app.use(errorLogger);
