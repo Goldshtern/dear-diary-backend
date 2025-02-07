@@ -16,8 +16,8 @@ const corsOptions = {
     process.env.NODE_ENV === "production"
       ? "https://mydd.crabdance.com"
       : "http://localhost:3000",
-  methods: "GET,POST,PUT,DELETE",
-  allowedHeaders: "Content-Type,Authorization",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
 };
 
@@ -30,6 +30,7 @@ mongoose
 
 app.use(express.json());
 app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 app.use(requestLogger);
 app.use("/", mainRouter);
 app.use(errorLogger);
